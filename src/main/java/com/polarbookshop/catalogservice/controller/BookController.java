@@ -39,7 +39,7 @@ public class BookController {
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
   public Book addBook(@Valid @RequestBody Book book) {
-    return bookService.addToCatalog(book);
+    return bookService.addBookToCatalog(book);
   }
 
   @DeleteMapping("{isbn}")

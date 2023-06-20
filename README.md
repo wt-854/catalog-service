@@ -39,3 +39,13 @@
 - Even if config server is replicated, there is a chance it is temporarily unavailable when a client app like Catalog Service starts up. Can make use of the retry pattern to try connecting to the config server again before failing.
 - Spring retry behaviour is only enabled when `spring.cloud.config.fail-fast` is true.
 - Can make use of actuator endpoint `/actuator/refresh` to refresh config. Since a custom property was already defined with @ConfigurationProperties bean, it is already listening to **RefreshScopeRefreshedEvent** by default, so dont need to make any code changes. When a refresh is triggered, the PolarProperties bean will be reloaded with the latest configuration available.
+
+---
+
+## Database Notes
+
+- Opening and closing database connections are relatively expensive operations, so you don’t want to do that every time your application accesses data
+- Make use of connection pooling: the application establishes several connections with the database and reuses them, rather than creating new ones for each data access operation
+- Spring Boot uses HikariCP for connection pooling, and you can configure it from the **application.yml** file. You want to
+  configure at least a connection timeout `spring.datasource.hikari.connection-timeout` and a maximum number of connections in the pool `spring.datasource.hikari.maximum-pool-size`, because these both affect application resilience and performance.
+- Starting point for [Hikari Pooling Size](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing)

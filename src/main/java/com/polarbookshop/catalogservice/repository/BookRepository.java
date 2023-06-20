@@ -2,18 +2,19 @@ package com.polarbookshop.catalogservice.repository;
 
 import java.util.Optional;
 
+import org.springframework.data.repository.CrudRepository;
+
 import com.polarbookshop.catalogservice.entity.Book;
 
-public interface BookRepository {
+import jakarta.transaction.Transactional;
 
-  Iterable<Book> findAll();
+public interface BookRepository extends CrudRepository<Book, Long> {
 
   Optional<Book> findByIsbn(String isbn);
 
   boolean existsByIsbn(String isbn);
 
-  Book save(Book book);
-
+  @Transactional
   void deleteByIsbn(String isbn);
 
 }
