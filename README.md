@@ -49,3 +49,7 @@
 - Spring Boot uses HikariCP for connection pooling, and you can configure it from the **application.yml** file. You want to
   configure at least a connection timeout `spring.datasource.hikari.connection-timeout` and a maximum number of connections in the pool `spring.datasource.hikari.maximum-pool-size`, because these both affect application resilience and performance.
 - Starting point for [Hikari Pooling Size](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing)
+
+## Testcontainer Notes
+- Failed to load ApplicationContext - might be caused by incompatible testcontainer version. Try upgrading to higher to resolve 
+
