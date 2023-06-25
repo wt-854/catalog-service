@@ -26,7 +26,7 @@ public class BookJsonTests {
         @Test
         void testSerialize() throws Exception {
                 var now = Instant.now();
-                var book = new Book(394L, "1234567890", "Title", "Author", 9.90, now, now, 21);
+                var book = new Book(394L, "1234567890", "Title", "Author", 9.90, "Polarsophia", now, now, 21);
                 // Verifying the parsing from Java to JSON, using the JsonPath format to
                 // navigate the JSON object
                 var jsonContent = json.write(book);
@@ -59,6 +59,7 @@ public class BookJsonTests {
                                     "title": "Title",
                                     "author": "Author",
                                     "price": 9.90,
+                                    "publisher": "Polarsophia",
                                     "createdDate": "2021-09-07T22:50:37.135029Z",
                                     "lastModifiedDate": "2021-09-07T22:50:37.135029Z",
                                     "version": 21
@@ -67,6 +68,6 @@ public class BookJsonTests {
                 // Verifies the parsing from JSON to Java
                 assertThat(json.parse(content))
                                 .usingRecursiveComparison()
-                                .isEqualTo(new Book(394L, "1234567890", "Title", "Author", 9.90, instant, instant, 21));
+                                .isEqualTo(new Book(394L, "1234567890", "Title", "Author", 9.90, "Polarsophia", instant, instant, 21));
         }
 }
