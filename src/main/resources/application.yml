@@ -1,9 +1,6 @@
 spring:
   application:
     name: catalog-service
-  sql:
-    init:
-      mode: always
   config:
     import: "optional:configserver:"
   cloud:

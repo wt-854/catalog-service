@@ -53,3 +53,5 @@
 ## Testcontainer Notes
 - Failed to load ApplicationContext - might be caused by incompatible testcontainer version. Try upgrading to higher to resolve 
 
+## Flyway Notes
+- Take note of version compatibility issues 
